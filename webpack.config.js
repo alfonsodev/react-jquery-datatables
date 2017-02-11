@@ -15,7 +15,19 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader' },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['latest-node6', 'react'],
+          plugins: [
+            'transform-decorators-legacy',
+            'transform-object-rest-spread',
+            'transform-function-bind',
+          ],
+        },
+      },
     ],
   },
 };
